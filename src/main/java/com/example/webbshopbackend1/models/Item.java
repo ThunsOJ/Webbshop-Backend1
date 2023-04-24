@@ -23,11 +23,11 @@ public class Item {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Item item)) return false;
-        return Objects.equals(getId(), item.getId());
+        return Objects.equals(id, item.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId());
+        return Objects.hash(id);
     }
 }
