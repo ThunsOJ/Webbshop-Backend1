@@ -23,10 +23,9 @@ public class Order {
 //    @OneToMany(cascade = CascadeType.ALL)
 //    private List<OrderProduct> products = new ArrayList<>();
 
-//    @OneToMany
-//    @JoinColumn
-//    private Customer customer ;
-
+    @ManyToOne
+    @JoinColumn
+    private Customer customer ;
 
     @Override
     public boolean equals(Object o) {
