@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -19,8 +20,8 @@ public class Customer {
     private String name;
     private int ssn;
 
-  /*  @OneToMany(cascade = CascadeType.ALL)
-    private List<Orders> ordersList;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Order> ordersList;
 
     @Override
    public boolean equals(Object o) {
@@ -29,11 +30,9 @@ public class Customer {
       return ssn == customer.ssn && id.equals(customer.id) && name.equals(customer.name) && Objects.equals(ordersList, customer.ordersList);
     }
 
- //   @Override
+    @Override
     public int hashCode() {
         return Objects.hash(id, name);
     }
-hej
-    */
 
 }
