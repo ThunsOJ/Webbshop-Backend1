@@ -24,15 +24,15 @@ public class Customer {
     private List<Order> ordersList;
 
     @Override
-   public boolean equals(Object o) {
+    public boolean equals(Object o) {
         if (this == o) return true;
-       if (!(o instanceof Customer customer)) return false;
-      return ssn == customer.ssn && id.equals(customer.id) && name.equals(customer.name) && Objects.equals(ordersList, customer.ordersList);
+        if (!(o instanceof Customer customer)) return false;
+        return ssn == customer.ssn && id.equals(customer.id) && name.equals(customer.name) && Objects.equals(ordersList, customer.ordersList);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(id, name);
     }
-
 }
+
