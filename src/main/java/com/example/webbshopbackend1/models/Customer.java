@@ -26,6 +26,9 @@ public class Customer {
     private Date created;
     private Date updated;
 
+    public Customer(String name, String ssn) {
+    }
+
     @PrePersist
     protected void onCreate() {
         created = new Date();
