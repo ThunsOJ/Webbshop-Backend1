@@ -13,7 +13,7 @@ public class CustomerBootstrap {
 
     private final CustomerRepository customerRepository;
 
-    public List<Customer> addCustomers() {
+    public List<Customer> addCustomer() {
         Customer customer1 = new Customer("Ann Al", "860327");
         Customer customer2 = new Customer("Ludde", "341202");
         Customer customer3 = new Customer("Hassan", "021005");
