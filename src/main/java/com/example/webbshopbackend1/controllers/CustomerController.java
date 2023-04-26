@@ -22,12 +22,9 @@ import java.util.List;
 
         //hitta kund baserat på id
         @GetMapping("/{id}")
-        @ResponseBody
-        public String getCustomerById(@PathVariable(required = true)
+        public Customer getCustomerById(@PathVariable(required = true)
                                               Long id){
-            Customer c = customerRepository.findById(id).get();
-            return "Customer with the requested ID: " + c;
-
+            return customerRepository.findById(id).get();
         }
 
         //lägg till ny kund
