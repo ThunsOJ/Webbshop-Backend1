@@ -21,4 +21,7 @@ public class OrdersProduct {
     @JoinColumn
     private Product product;
 
+    public OrdersProduct(Product product) {
+        this.product = product;
+    }
 }

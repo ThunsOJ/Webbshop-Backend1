@@ -31,6 +31,11 @@ public class Orders {
     private Date created;
     private Date updated;
 
+    public void setOrdersProducts(List<OrdersProduct> ordersProducts) {
+        ordersProducts.forEach(e-> e.setOrder(this));
+        this.ordersProducts = ordersProducts;
+    }
+
     @PrePersist
     protected void onCreate() {
         created = new Date();
