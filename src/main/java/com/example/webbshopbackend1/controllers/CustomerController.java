@@ -8,8 +8,8 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-
 @RequestMapping("/customer")
+
     public class CustomerController {
 
     private final CustomerRepository customerRepository;
