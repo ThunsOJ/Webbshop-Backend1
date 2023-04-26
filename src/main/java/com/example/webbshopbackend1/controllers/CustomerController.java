@@ -22,16 +22,15 @@ import java.util.List;
 
         //hitta kund baserat på id
         @GetMapping("/{id}")
-        public Customer getCustomerById(@PathVariable(required = true)
-                                              Long id){
+        public Customer getCustomerById(@PathVariable Long id){
             return customerRepository.findById(id).get();
         }
 
         //lägg till ny kund
         @PostMapping("/add")
-        public String addCustomer(@RequestParam String name, @RequestParam String ssn){
-            customerRepository.save(new Customer(name, ssn));
-            return "New customer "+name+" was added";
+        public String addCustomer(@RequestBody Customer c){
+            customerRepository.save(c);
+            return "New customer "+c.getName()+" was added";
             }
 
 
