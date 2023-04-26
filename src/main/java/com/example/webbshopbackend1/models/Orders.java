@@ -1,5 +1,6 @@
 package com.example.webbshopbackend1.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -33,6 +34,10 @@ public class Orders {
 
     public Orders(List<OrdersProduct> ordersProducts, Customer customer) {
         this.ordersProducts = ordersProducts;
+        this.customer = customer;
+    }
+
+    public Orders(Customer customer) {
         this.customer = customer;
     }
 

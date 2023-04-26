@@ -1,5 +1,6 @@
 package com.example.webbshopbackend1.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -15,6 +16,7 @@ public class OrdersProduct {
 
     @ManyToOne
     @JoinColumn
+    @JsonIgnore
     private Orders order;
 
     @OneToOne
@@ -22,6 +24,11 @@ public class OrdersProduct {
     private Product product;
 
     public OrdersProduct(Product product) {
+        this.product = product;
+    }
+
+    public OrdersProduct(Orders order, Product product) {
+        this.order = order;
         this.product = product;
     }
 }

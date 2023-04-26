@@ -10,6 +10,7 @@ import com.example.webbshopbackend1.repositories.OrderRepository;
 import lombok.AllArgsConstructor;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @AllArgsConstructor
 public class OrderBootstrap {
@@ -19,11 +20,18 @@ public class OrderBootstrap {
     public void generateOrders(List<Customer> customers, List<Product> products){
 
         //Orders order1 = new Orders();
+
+
+//        Orders order = new Orders(customerRepository.findById(id).get());
+//        order.setOrdersProducts(products.stream().map(product -> new OrdersProduct(order, product)).collect(Collectors.toList()));
+//        orderRepository.save(order);
+
         OrdersProduct product1 = new OrdersProduct(products.get(0));
         OrdersProduct product2 = new OrdersProduct(products.get(1));
         Orders order1 = new Orders(List.of(product1, product2), customers.get(0));
         product1.setOrder(order1);
         product2.setOrder(order1);
+        orderRepository.save(order1);
         //order1.setId(1L);
 //        Orders order1 = new Orders(List.of(product1, product2), customers.get(0));
 ////        order1.setOrdersProducts(List.of(product1, product2));
@@ -66,7 +74,7 @@ public class OrderBootstrap {
 //        ordersProductRepository.save(product7);
 //        ordersProductRepository.save(product8);
 
-        orderRepository.save(order1);
+        //orderRepository.save(order1);
         orderRepository.save(order2);
         orderRepository.save(order3);
         orderRepository.save(order4);

@@ -1,4 +1,5 @@
 package com.example.webbshopbackend1.models;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,6 +22,7 @@ public class Customer {
     private int ssn;
 
     @OneToMany(mappedBy = "customer")
+    @JsonIgnore
     private List<Orders> orders;
 
     private Date created;
