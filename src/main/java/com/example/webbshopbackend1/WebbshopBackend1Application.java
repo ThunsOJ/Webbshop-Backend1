@@ -20,9 +20,9 @@ public class WebbshopBackend1Application {
     }
 
     @Bean
-    public CommandLineRunner init(CustomerRepository customerRepository, ProductRepository productRepository, OrderRepository orderRepository, OrdersProductRepository ordersProductRepository){
+    public CommandLineRunner init(CustomerRepository customerRepository, ProductRepository productRepository, OrderRepository orderRepository){
         return (args) -> {
-            new OrderBootstrap(orderRepository, ordersProductRepository).generateOrders(
+            new OrderBootstrap(orderRepository).generateOrders(
                     new CustomerBootstrap(customerRepository).addCustomer(),
                     new ProductBootstrap(productRepository).createProducts());
         };

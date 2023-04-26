@@ -31,6 +31,11 @@ public class Orders {
     private Date created;
     private Date updated;
 
+    public Orders(List<OrdersProduct> ordersProducts, Customer customer) {
+        this.ordersProducts = ordersProducts;
+        this.customer = customer;
+    }
+
     public void setOrdersProducts(List<OrdersProduct> ordersProducts) {
         this.ordersProducts = ordersProducts;
     }
