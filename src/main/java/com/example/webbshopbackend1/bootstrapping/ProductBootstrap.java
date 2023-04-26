@@ -16,8 +16,6 @@ public class ProductBootstrap {
 
     final ProductRepository repo;
 
-
-    @Bean
     public List<Product> createProducts(){
         Product p1 = new Product("Wookpanna",99.99);
         Product p2 = new Product("Kexchoklad",867.99);
