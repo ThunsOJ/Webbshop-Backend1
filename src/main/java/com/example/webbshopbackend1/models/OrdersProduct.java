@@ -13,10 +13,10 @@ public class OrdersProduct {
     @GeneratedValue
     private Long id;
 
-//    @ManyToOne
-//    @JoinColumn
-//    private Orders order;
-//
+    @ManyToOne
+    @JoinColumn
+    private Orders order;
+
     @OneToOne
     @JoinColumn
     private Product product;

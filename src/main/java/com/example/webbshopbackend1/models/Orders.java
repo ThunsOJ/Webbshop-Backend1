@@ -25,9 +25,9 @@ public class Orders {
 //    @OneToMany(cascade = CascadeType.ALL)
 //    private List<OrdersProduct> ordersProducts = new ArrayList<>();
 
-//    @ManyToOne
-//    @JoinColumn
-//    private Customer customer;
+    @ManyToOne
+    @JoinColumn
+    private Customer customer;
 
     private Date created;
     private Date updated;
