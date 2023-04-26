@@ -12,22 +12,17 @@ import java.util.Objects;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Item {
+public class Product {
     @Id
     @GeneratedValue
     private Long id;
     private String name;
-    private double price;
+    private Double price;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Item item)) return false;
+        if (!(o instanceof Product item)) return false;
         return Objects.equals(id, item.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
     }
 }
