@@ -21,7 +21,7 @@ import java.util.List;
         }
 
         //hitta kund baserat på id
-        @GetMapping("/id")
+        @GetMapping("/{id}")
         @ResponseBody
         public String getCustomerById(@PathVariable(required = true)
                                               Long id){
@@ -39,7 +39,7 @@ import java.util.List;
 
 
             //ta bort en kund baserat på id
-        @DeleteMapping("delete/{id}")
+        @DeleteMapping("/delete/{id}")
         public String deleteCustomer(@PathVariable Long id){
             customerRepository.deleteById(id);
             return "The customer with ID "+id+" was deleted.";
