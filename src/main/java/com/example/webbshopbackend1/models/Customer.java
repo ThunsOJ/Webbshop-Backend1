@@ -29,6 +29,10 @@ public class Customer {
     public Customer(String name, String ssn) {
     }
 
+    public Customer(Long id) {
+        this.id = id;
+    }
+
     @PrePersist
     protected void onCreate() {
         created = new Date();
