@@ -5,50 +5,76 @@ import com.example.webbshopbackend1.models.Customer;
 import com.example.webbshopbackend1.models.Orders;
 import com.example.webbshopbackend1.models.OrdersProduct;
 import com.example.webbshopbackend1.models.Product;
+import com.example.webbshopbackend1.repositories.OrdersProductRepository;
 import com.example.webbshopbackend1.repositories.OrderRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.annotation.Order;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @AllArgsConstructor
 public class OrderBootstrap {
 
     private final OrderRepository orderRepository;
+    private final OrdersProductRepository ordersProductRepository;
 
     public void generateOrders(List<Customer> customers, List<Product> products){
 
-        List<OrdersProduct> ordersProductList = new ArrayList<>();
-
-        products.forEach(e->{
-            ordersProductList.add(new OrdersProduct(e));
-        });
-
         Orders order1 = new Orders();
+        OrdersProduct product1 = new OrdersProduct(products.get(0));
+        OrdersProduct product2 = new OrdersProduct(products.get(1));
         order1.setId(1L);
-        order1.setOrdersProducts(List.of(ordersProductList.get(0), ordersProductList.get(1)));
+        order1.setOrdersProducts(List.of(product1, product2));
         order1.setCustomer(customers.get(0));
+        product1.setOrder(order1);
+        product2.setOrder(order1);
+//        ordersProductRepository.save(product1);
+//        ordersProductRepository.save(product2);
 
         Orders order2 = new Orders();
+        OrdersProduct product3 = new OrdersProduct(products.get(2));
+        OrdersProduct product4 = new OrdersProduct(products.get(3));
         order2.setId(2L);
-        order2.setOrdersProducts(List.of(ordersProductList.get(2), ordersProductList.get(3)));
+        order2.setOrdersProducts(List.of(product3, product4));
         order2.setCustomer(customers.get(0));
+        product3.setOrder(order2);
+        product4.setOrder(order2);
+//        ordersProductRepository.save(product3);
+//        ordersProductRepository.save(product4);
 
         Orders order3 = new Orders();
+        OrdersProduct product5 = new OrdersProduct(products.get(1));
+        OrdersProduct product6 = new OrdersProduct(products.get(0));
         order3.setId(3L);
-        order3.setOrdersProducts(List.of(ordersProductList.get(3), ordersProductList.get(3)));
+        order3.setOrdersProducts(List.of(product5, product6));
         order3.setCustomer(customers.get(1));
+        product5.setOrder(order3);
+        product6.setOrder(order3);
+//        ordersProductRepository.save(product5);
+//        ordersProductRepository.save(product6);
 
         Orders order4 = new Orders();
-        order4.setId(3L);
-        order4.setOrdersProducts(List.of(ordersProductList.get(2), ordersProductList.get(0)));
+        OrdersProduct product7 = new OrdersProduct(products.get(3));
+        OrdersProduct product8 = new OrdersProduct(products.get(2));
+        order4.setId(4L);
+        order4.setOrdersProducts(List.of(product7, product8));
         order4.setCustomer(customers.get(2));
+        product7.setOrder(order4);
+        product8.setOrder(order4);
+//        ordersProductRepository.save(product7);
+//        ordersProductRepository.save(product8);
 
         orderRepository.save(order1);
         orderRepository.save(order2);
         orderRepository.save(order3);
         orderRepository.save(order4);
+
+//        ordersProductRepository.save(product1);
+//        ordersProductRepository.save(product2);
+//        ordersProductRepository.save(product3);
+//        ordersProductRepository.save(product4);
+//        ordersProductRepository.save(product5);
+//        ordersProductRepository.save(product6);
+//        ordersProductRepository.save(product7);
+//        ordersProductRepository.save(product8);
     }
 }

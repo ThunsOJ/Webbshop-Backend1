@@ -21,7 +21,7 @@ public class Orders {
     @GeneratedValue
     private Long id;
 
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<OrdersProduct> ordersProducts = new ArrayList<>();
 
     @ManyToOne
@@ -32,7 +32,6 @@ public class Orders {
     private Date updated;
 
     public void setOrdersProducts(List<OrdersProduct> ordersProducts) {
-        ordersProducts.forEach(e-> e.setOrder(this));
         this.ordersProducts = ordersProducts;
     }
 

@@ -33,6 +33,12 @@ public class Customer {
         this.id = id;
     }
 
+    public Customer(Long id, String name, int ssn) {
+        this.id = id;
+        this.name = name;
+        this.ssn = ssn;
+    }
+
     @PrePersist
     protected void onCreate() {
         created = new Date();
