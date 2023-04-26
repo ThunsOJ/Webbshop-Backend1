@@ -21,9 +21,4 @@ public class OrdersProduct {
     @JoinColumn
     private Product product;
 
-
-//    @Override
-//    public int hashCode() {
-//        return Objects.hash(id);
-//    }
 }

@@ -12,7 +12,6 @@ import java.util.Objects;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-
 public class Customer {
 
     @Id
@@ -21,9 +20,8 @@ public class Customer {
     private String name;
     private int ssn;
 
-//    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-//    @JoinColumn
-//    private List<Orders> orders;
+    @OneToMany(mappedBy = "customer")
+    private List<Orders> orders;
 
     private Date created;
     private Date updated;

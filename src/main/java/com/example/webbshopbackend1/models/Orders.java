@@ -9,10 +9,8 @@ import lombok.NoArgsConstructor;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Objects;
 
 @Entity
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -22,8 +20,8 @@ public class Orders {
     @GeneratedValue
     private Long id;
 
-//    @OneToMany(cascade = CascadeType.ALL)
-//    private List<OrdersProduct> ordersProducts = new ArrayList<>();
+    @OneToMany(mappedBy = "order")
+    private List<OrdersProduct> ordersProducts = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn
