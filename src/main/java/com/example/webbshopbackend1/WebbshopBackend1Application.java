@@ -5,7 +5,6 @@ import com.example.webbshopbackend1.bootstrapping.OrderBootstrap;
 import com.example.webbshopbackend1.bootstrapping.ProductBootstrap;
 import com.example.webbshopbackend1.repositories.CustomerRepository;
 import com.example.webbshopbackend1.repositories.OrderRepository;
-import com.example.webbshopbackend1.repositories.OrdersProductRepository;
 import com.example.webbshopbackend1.repositories.ProductRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -24,7 +23,8 @@ public class WebbshopBackend1Application {
         return (args) -> {
             new OrderBootstrap(orderRepository).generateOrders(
                     new CustomerBootstrap(customerRepository).addCustomer(),
-                    new ProductBootstrap(productRepository).createProducts());
+                    new ProductBootstrap(productRepository).createProducts()
+            );
         };
     }
 }

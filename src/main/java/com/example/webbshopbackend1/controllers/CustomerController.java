@@ -15,29 +15,28 @@ import java.util.List;
     private final CustomerRepository customerRepository;
 
     //visa alla kunder
-        @GetMapping("/all")
-        public List<Customer> getAllCustomers(){
-            return customerRepository.findAll();
-        }
+    @GetMapping("/all")
+    public List<Customer> getAllCustomers() {
+        return customerRepository.findAll();
+    }
 
-        //hitta kund baserat på id
-        @GetMapping("/{id}")
-        public Customer getCustomerById(@PathVariable Long id){
-            return customerRepository.findById(id).get();
-        }
+    //hitta kund baserat på id
+    @GetMapping("/{id}")
+    public Customer getCustomerById(@PathVariable Long id) {
+        return customerRepository.findById(id).get();
+    }
 
-        //lägg till ny kund
-        @PostMapping("/add")
-        public String addCustomer(@RequestBody Customer c){
-            customerRepository.save(c);
-            return "New customer "+c.getName()+" was added";
-            }
+    //lägg till ny kund
+    @PostMapping("/add")
+    public String addCustomer(@RequestBody Customer c) {
+        customerRepository.save(c);
+        return "New customer " + c.getName() + " was added";
+    }
 
-
-            //ta bort en kund baserat på id
-        @DeleteMapping("/delete/{id}")
-        public String deleteCustomer(@PathVariable Long id){
-            customerRepository.deleteById(id);
-            return "The customer with ID "+id+" was deleted.";
-        }
+    //ta bort en kund baserat på id
+    @DeleteMapping("/delete/{id}")
+    public String deleteCustomer(@PathVariable Long id) {
+        customerRepository.deleteById(id);
+        return "The customer with ID " + id + " was deleted.";
+    }
 }

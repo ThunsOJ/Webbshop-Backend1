@@ -3,8 +3,6 @@ package com.example.webbshopbackend1.bootstrapping;
 import com.example.webbshopbackend1.models.Product;
 import com.example.webbshopbackend1.repositories.ProductRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 
 
 import java.util.Arrays;

@@ -5,12 +5,10 @@ import com.example.webbshopbackend1.models.Customer;
 import com.example.webbshopbackend1.models.Orders;
 import com.example.webbshopbackend1.models.OrdersProduct;
 import com.example.webbshopbackend1.models.Product;
-import com.example.webbshopbackend1.repositories.OrdersProductRepository;
 import com.example.webbshopbackend1.repositories.OrderRepository;
 import lombok.AllArgsConstructor;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @AllArgsConstructor
 public class OrderBootstrap {

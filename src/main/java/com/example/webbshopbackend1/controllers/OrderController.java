@@ -22,7 +22,6 @@ public class OrderController {
 
     private final OrderRepository orderRepository;
     private final CustomerRepository customerRepository;
-    private final ProductRepository productRepository;
 
 
     @GetMapping("/all")
