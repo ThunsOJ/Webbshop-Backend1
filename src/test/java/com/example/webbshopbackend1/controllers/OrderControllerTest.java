@@ -50,8 +50,8 @@ public class OrderControllerTest {
         Product product4 = new Product(4L, "Servis", 999.00);
 
         Customer customer1 = new Customer(1L, "Kajsa", 111111);
-        Customer customer2 = new Customer(1L, "Greta", 222222);
-        Customer customer3 = new Customer(1L, "Jennifer", 333333);
+        Customer customer2 = new Customer(2L, "Greta", 222222);
+        Customer customer3 = new Customer(3L, "Jennifer", 333333);
 
         OrdersProduct ordersProduct1 = new OrdersProduct(product1);
         OrdersProduct ordersProduct2 = new OrdersProduct(product2);
@@ -93,8 +93,8 @@ public class OrderControllerTest {
         Product product4 = new Product(4L, "Servis", 999.00);
 
         Customer customer1 = new Customer(1L, "Kajsa", 111111);
-        Customer customer2 = new Customer(1L, "Greta", 222222);
-        Customer customer3 = new Customer(1L, "Jennifer", 333333);
+        Customer customer2 = new Customer(2L, "Greta", 222222);
+        Customer customer3 = new Customer(3L, "Jennifer", 333333);
 
         OrdersProduct ordersProduct1 = new OrdersProduct(product1);
         OrdersProduct ordersProduct2 = new OrdersProduct(product2);
