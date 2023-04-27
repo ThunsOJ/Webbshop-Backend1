@@ -17,7 +17,7 @@ public class WebbshopBackend1Application {
     public static void main(String[] args) {
         SpringApplication.run(WebbshopBackend1Application.class, args);
     }
-
+/*
     @Bean
     public CommandLineRunner init(CustomerRepository customerRepository, ProductRepository productRepository, OrderRepository orderRepository){
         return (args) -> {
@@ -27,4 +27,6 @@ public class WebbshopBackend1Application {
             );
         };
     }
+
+ */
 }
