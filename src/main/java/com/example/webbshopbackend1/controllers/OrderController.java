@@ -6,7 +6,6 @@ import com.example.webbshopbackend1.models.OrdersProduct;
 import com.example.webbshopbackend1.models.Product;
 import com.example.webbshopbackend1.repositories.CustomerRepository;
 import com.example.webbshopbackend1.repositories.OrderRepository;
-import com.example.webbshopbackend1.repositories.ProductRepository;
 import com.example.webbshopbackend1.services.ResponseOrderList;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -48,5 +47,4 @@ public class OrderController {
         orderRepository.save(order);
         return ResponseEntity.ok("Success!");
     }
-
 }
