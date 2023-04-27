@@ -1,4 +1,4 @@
-package com.example.webbshopbackend1;
+package com.example.webbshopbackend1.controllers;
 
 import com.example.webbshopbackend1.models.Customer;
 import com.example.webbshopbackend1.models.Orders;
