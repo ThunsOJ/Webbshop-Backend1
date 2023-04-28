@@ -1,10 +1,10 @@
 package com.example.webbshopbackend1.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
+import org.aspectj.weaver.ast.Or;
 
+import java.util.List;
 import java.util.Objects;
 
 @Entity

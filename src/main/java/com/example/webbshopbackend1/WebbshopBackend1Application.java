@@ -17,16 +17,14 @@ public class WebbshopBackend1Application {
     public static void main(String[] args) {
         SpringApplication.run(WebbshopBackend1Application.class, args);
     }
-/*
-    @Bean
-    public CommandLineRunner init(CustomerRepository customerRepository, ProductRepository productRepository, OrderRepository orderRepository){
-        return (args) -> {
-            new OrderBootstrap(orderRepository).generateOrders(
-                    new CustomerBootstrap(customerRepository).addCustomer(),
-                    new ProductBootstrap(productRepository).createProducts()
-            );
-        };
-    }
 
- */
+//    @Bean
+//    public CommandLineRunner init(CustomerRepository customerRepository, ProductRepository productRepository, OrderRepository orderRepository){
+//        return (args) -> {
+//            new OrderBootstrap(orderRepository).generateOrders(
+//                    new CustomerBootstrap(customerRepository).addCustomer(),
+//                    new ProductBootstrap(productRepository).createProducts()
+//            );
+//        };
+//    }
 }

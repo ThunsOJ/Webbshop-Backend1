@@ -1,18 +1,15 @@
 package com.example.webbshopbackend1.controllers;
 
-import com.example.webbshopbackend1.models.Customer;
 import com.example.webbshopbackend1.models.Orders;
-import com.example.webbshopbackend1.models.OrdersProduct;
+
 import com.example.webbshopbackend1.models.Product;
 import com.example.webbshopbackend1.repositories.CustomerRepository;
 import com.example.webbshopbackend1.repositories.OrderRepository;
-import com.example.webbshopbackend1.services.ResponseOrderList;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
@@ -24,27 +21,25 @@ public class OrderController {
 
 
     @GetMapping("/all")
-    public ResponseEntity<ResponseOrderList> all(){
-        Iterable<Orders> ordersList = orderRepository.findAll();
-        return ResponseEntity.ok(ResponseOrderList.builder()
-                .ordersList(ordersList)
-                .build());
+    public ResponseEntity<Iterable<Orders>> all(){
+        return ResponseEntity.ok(orderRepository.findAll());
     }
 
     @GetMapping("/customer/{id}")
-    public ResponseEntity<ResponseOrderList> orderByCustomer(@PathVariable Long id){
-        Iterable<Orders> ordersList = orderRepository.findByCustomer(new Customer(id));
-        return ResponseEntity.ok(ResponseOrderList.builder()
-                .ordersList(ordersList)
-                .build());
+    public ResponseEntity<Iterable<Orders>> orderByCustomer(@PathVariable Long id){
+        Iterable<Orders> ordersList = orderRepository.findByCustomer(
+                customerRepository.findById(id).get()
+        );
+        return ResponseEntity.ok(ordersList);
     }
 
     @PostMapping("/buy/{id}")
     public ResponseEntity<String> purchase(@PathVariable Long id,
             @RequestBody List<Product> products){
-        Orders order = new Orders(customerRepository.findById(id).get());
-        order.setOrdersProducts(products.stream().map(product -> new OrdersProduct(order, product)).collect(Collectors.toList()));
-        orderRepository.save(order);
+        orderRepository.save(new Orders(
+                customerRepository.findById(id).get(),
+                products
+        ));
         return ResponseEntity.ok("Success!");
     }
 }

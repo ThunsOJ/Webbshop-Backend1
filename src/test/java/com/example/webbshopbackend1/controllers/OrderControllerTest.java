@@ -2,7 +2,6 @@ package com.example.webbshopbackend1.controllers;
 
 import com.example.webbshopbackend1.models.Customer;
 import com.example.webbshopbackend1.models.Orders;
-import com.example.webbshopbackend1.models.OrdersProduct;
 import com.example.webbshopbackend1.models.Product;
 import com.example.webbshopbackend1.repositories.CustomerRepository;
 import com.example.webbshopbackend1.repositories.OrderRepository;
@@ -26,6 +25,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 
 @SpringBootTest
@@ -38,95 +38,60 @@ public class OrderControllerTest {
     @MockBean
     private OrderRepository orderRepository;
 
-    //@MockBean
-    //private CustomerRepository customerRepository;
+    @MockBean
+    private CustomerRepository customerRepository;
 
     @BeforeEach
     public void init() {
 
-        Product product1 = new Product(1L, "Lingonsylt", 59.00);
-        Product product2 = new Product(2L, "Toapapper", 69.00);
-        Product product3 = new Product(3L, "Elcykel", 13999.00);
-        Product product4 = new Product(4L, "Servis", 999.00);
+        Product p1 = new Product(1L,"Wookpanna",99.99);
+        Product p2 = new Product(2L,"Kexchoklad",867.99);
+        Product p3 = new Product(3L,"Kalaspuffar",3.99);
+        Product p4 = new Product(4L,"Pringles",233.99);
 
-        Customer customer1 = new Customer(1L, "Kajsa", 111111);
-        Customer customer2 = new Customer(2L, "Greta", 222222);
-        Customer customer3 = new Customer(3L, "Jennifer", 333333);
+        Customer customer1 = new Customer(1L, "Ann Al", 860327);
+        Customer customer2 = new Customer(2L, "Ludde", 341202);
+        Customer customer3 = new Customer(3L, "Hassan", 121005);
 
-        OrdersProduct ordersProduct1 = new OrdersProduct(product1);
-        OrdersProduct ordersProduct2 = new OrdersProduct(product2);
-        Orders order1 = new Orders(List.of(ordersProduct1, ordersProduct2), customer1);
-        ordersProduct1.setOrder(order1);
-        ordersProduct2.setOrder(order1);
-
-        OrdersProduct ordersProduct3 = new OrdersProduct(product2);
-        OrdersProduct ordersProduct4 = new OrdersProduct(product3);
-        Orders order2 = new Orders(List.of(ordersProduct3, ordersProduct4), customer1);
-        ordersProduct3.setOrder(order2);
-        ordersProduct4.setOrder(order2);
-
-        OrdersProduct ordersProduct5 = new OrdersProduct(product3);
-        OrdersProduct ordersProduct6 = new OrdersProduct(product4);
-        Orders order3 = new Orders(List.of(ordersProduct5, ordersProduct6), customer2);
-        ordersProduct5.setOrder(order3);
-        ordersProduct6.setOrder(order3);
-
-        OrdersProduct ordersProduct7 = new OrdersProduct(product3);
-        OrdersProduct ordersProduct8 = new OrdersProduct(product1);
-        Orders order4 = new Orders(List.of(ordersProduct7, ordersProduct8), customer3);
-        ordersProduct7.setOrder(order4);
-        ordersProduct8.setOrder(order4);
+        Orders order1 = new Orders(customer1, List.of(p1, p2));
+        Orders order2 = new Orders(customer1, List.of(p3, p2));
+        Orders order3 = new Orders(customer2, List.of(p4, p1));
+        Orders order4 = new Orders(customer3, List.of(p4, p3));
 
 
         when(orderRepository.findByCustomer(customer1)).thenReturn(List.of(order1, order2));
         when(orderRepository.findByCustomer(customer2)).thenReturn(List.of(order3));
         when(orderRepository.findByCustomer(customer3)).thenReturn(List.of(order4));
         when(orderRepository.findAll()).thenReturn(Arrays.asList(order1, order2, order3, order4));
+
+        when(customerRepository.findById(1L)).thenReturn(Optional.of(customer1));
+        when(customerRepository.findById(2L)).thenReturn(Optional.of(customer2));
+        when(customerRepository.findById(3L)).thenReturn(Optional.of(customer3));
+        when(customerRepository.findAll()).thenReturn(Arrays.asList(customer1, customer2, customer3));
     }
 
     @Test
     void getAll() throws Exception {
 
-        Product product1 = new Product(1L, "Lingonsylt", 59.00);
-        Product product2 = new Product(2L, "Toapapper", 69.00);
-        Product product3 = new Product(3L, "Elcykel", 13999.00);
-        Product product4 = new Product(4L, "Servis", 999.00);
+        Product p1 = new Product(1L,"Wookpanna",99.99);
+        Product p2 = new Product(2L,"Kexchoklad",867.99);
+        Product p3 = new Product(3L,"Kalaspuffar",3.99);
+        Product p4 = new Product(4L,"Pringles",233.99);
 
-        Customer customer1 = new Customer(1L, "Kajsa", 111111);
-        Customer customer2 = new Customer(2L, "Greta", 222222);
-        Customer customer3 = new Customer(3L, "Jennifer", 333333);
+        Customer customer1 = new Customer(1L, "Ann Al", 860327);
+        Customer customer2 = new Customer(2L, "Ludde", 341202);
+        Customer customer3 = new Customer(3L, "Hassan", 121005);
 
-        OrdersProduct ordersProduct1 = new OrdersProduct(product1);
-        OrdersProduct ordersProduct2 = new OrdersProduct(product2);
-        Orders order1 = new Orders(List.of(ordersProduct1, ordersProduct2), customer1);
-        ordersProduct1.setOrder(order1);
-        ordersProduct2.setOrder(order1);
-
-        OrdersProduct ordersProduct3 = new OrdersProduct(product2);
-        OrdersProduct ordersProduct4 = new OrdersProduct(product3);
-        Orders order2 = new Orders(List.of(ordersProduct3, ordersProduct4), customer1);
-        ordersProduct3.setOrder(order2);
-        ordersProduct4.setOrder(order2);
-
-        OrdersProduct ordersProduct5 = new OrdersProduct(product3);
-        OrdersProduct ordersProduct6 = new OrdersProduct(product4);
-        Orders order3 = new Orders(List.of(ordersProduct5, ordersProduct6), customer2);
-        ordersProduct5.setOrder(order3);
-        ordersProduct6.setOrder(order3);
-
-        OrdersProduct ordersProduct7 = new OrdersProduct(product3);
-        OrdersProduct ordersProduct8 = new OrdersProduct(product1);
-        Orders order4 = new Orders(List.of(ordersProduct7, ordersProduct8), customer3);
-        ordersProduct7.setOrder(order4);
-        ordersProduct8.setOrder(order4);
+        Orders order1 = new Orders(customer1, List.of(p1, p2));
+        Orders order2 = new Orders(customer1, List.of(p3, p2));
+        Orders order3 = new Orders(customer2, List.of(p4, p1));
+        Orders order4 = new Orders(customer3, List.of(p4, p3));
 
         this.mockMvc.perform(get("/order/all"))
                 .andExpect(status().isOk())
                 .andExpect(content().json(
                         new ObjectMapper().writeValueAsString(
-                                ResponseOrderList.builder()
-                                        .ordersList(List.of(order1, order2, order3, order4))
-                                        .build()
+                                List.of(order1, order2, order3, order4)
                         )
                 ));
     }
@@ -134,31 +99,20 @@ public class OrderControllerTest {
     @Test
     void getOrderByCustomer() throws Exception{
 
-        Product product1 = new Product(1L, "Lingonsylt", 59.00);
-        Product product2 = new Product(2L, "Toapapper", 69.00);
-        Product product3 = new Product(3L, "Elcykel", 13999.00);
+        Product p1 = new Product(1L,"Wookpanna",99.99);
+        Product p2 = new Product(2L,"Kexchoklad",867.99);
+        Product p3 = new Product(3L,"Kalaspuffar",3.99);
 
-        Customer customer1 = new Customer(1L, "Kajsa", 111111);
+        Customer customer1 = new Customer(1L, "Ann Al", 860327);
 
-        OrdersProduct ordersProduct1 = new OrdersProduct(product1);
-        OrdersProduct ordersProduct2 = new OrdersProduct(product2);
-        Orders order1 = new Orders(List.of(ordersProduct1, ordersProduct2), customer1);
-        ordersProduct1.setOrder(order1);
-        ordersProduct2.setOrder(order1);
-
-        OrdersProduct ordersProduct3 = new OrdersProduct(product2);
-        OrdersProduct ordersProduct4 = new OrdersProduct(product3);
-        Orders order2 = new Orders(List.of(ordersProduct3, ordersProduct4), customer1);
-        ordersProduct3.setOrder(order2);
-        ordersProduct4.setOrder(order2);
+        Orders order1 = new Orders(customer1, List.of(p1, p2));
+        Orders order2 = new Orders(customer1, List.of(p3, p2));
 
         this.mockMvc.perform(get("/order/customer/1"))
                 .andExpect(status().isOk())
                 .andExpect(content().json(
                         new ObjectMapper().writeValueAsString(
-                                ResponseOrderList.builder()
-                                        .ordersList(List.of(order1, order2))
-                                        .build()
+                                List.of(order1, order2)
                         )
                 ));
     }
@@ -166,13 +120,13 @@ public class OrderControllerTest {
     @Test
     void makeOrder() throws Exception{
 
-        Product product3 = new Product(3L, "Elcykel", 13999.00);
-        Product product4 = new Product(4L, "Servis", 999.00);
+        Product p1 = new Product(1L,"Wookpanna",99.99);
+        Product p2 = new Product(2L,"Kexchoklad",867.99);
 
         this.mockMvc.perform(post("/order/buy/2")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(new ObjectMapper().writeValueAsString(
-                        List.of(product4, product3)
+                        List.of(p1, p2)
                 )))
                 .andExpect(status().isOk())
                 .andExpect(content().string(equalTo("Success!")));

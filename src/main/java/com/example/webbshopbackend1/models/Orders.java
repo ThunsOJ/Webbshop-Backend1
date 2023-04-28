@@ -22,8 +22,9 @@ public class Orders {
     @GeneratedValue
     private Long id;
 
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
-    private List<OrdersProduct> ordersProducts = new ArrayList<>();
+    @ManyToMany
+    @JoinTable
+    private List<Product> products;
 
     @ManyToOne
     @JoinColumn
@@ -32,17 +33,15 @@ public class Orders {
     private Date created;
     private Date updated;
 
-    public Orders(List<OrdersProduct> ordersProducts, Customer customer) {
-        this.ordersProducts = ordersProducts;
-        this.customer = customer;
-    }
+
 
     public Orders(Customer customer) {
         this.customer = customer;
     }
 
-    public void setOrdersProducts(List<OrdersProduct> ordersProducts) {
-        this.ordersProducts = ordersProducts;
+    public Orders(Customer customer, List<Product> products) {
+        this.products = products;
+        this.customer = customer;
     }
 
     @PrePersist

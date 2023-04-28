@@ -1,6 +1,7 @@
 package com.example.webbshopbackend1.controllers;
 
 import com.example.webbshopbackend1.models.Customer;
+import com.example.webbshopbackend1.repositories.CustomerRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 import static org.mockito.Mockito.when;
@@ -24,8 +26,11 @@ class CustomerControllerTests {
     @Autowired
     private MockMvc mockMvc;
 
+//    @MockBean
+//    private CustomerController customermocktest;
+
     @MockBean
-    private CustomerController customermocktest;
+    CustomerRepository customerRepository;
 
     @BeforeEach
     public void init() {
@@ -33,8 +38,11 @@ class CustomerControllerTests {
         Customer c2 = new Customer(2L, "Lennart", 341202);
         Customer c3 = new Customer(3L, "Märit", 121005);
 
-        when(customermocktest.getCustomerById(1L)).thenReturn(c1);
-        when(customermocktest.getAllCustomers()).thenReturn(Arrays.asList(c1, c2, c3));
+        when(customerRepository.findById(1L)).thenReturn(Optional.of(c1));
+        when(customerRepository.findById(2L)).thenReturn(Optional.of(c2));
+        when(customerRepository.findById(3L)).thenReturn(Optional.of(c3));
+        when(customerRepository.findAll()).thenReturn(List.of(c1,c2,c3));
+        
     }
 
     @Test
