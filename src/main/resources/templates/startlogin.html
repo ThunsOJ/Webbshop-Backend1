@@ -69,18 +69,13 @@
 
 <br>
 <div class="text">
-<p>Välkommen till giga shop! <br> Om du är ny kund och vill handla så registrera <br>
-    dig här nedanför och fortsätt sedan till produkter
-</p>
+    <p>Välkommen till giga shop! <br> Om du är ny kund och vill handla så registrera <br>
+        dig här nedanför och fortsätt sedan till produkter
+    </p>
     <br>
 
-    <form action="/startlogin" method="post">
-        <label for="name">Namn:</label><br>
-        <input type="text" id="name" name="name" value=""><br>
-        <label for="ssn">Personnummer:</label><br>
-        <input type="text" id="ssn" name="ssn" value=""><br><br>
-        <input type="submit" value="Registrera">
-    </form>
+<!-- error message och success meessage och error2 message -->
+    <p th:text="${msg}"></p>
 
 
 </div>

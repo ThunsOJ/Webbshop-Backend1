@@ -28,11 +28,14 @@ public class Customer {
     private Date created;
     private Date updated;
 
-    public Customer(String name, String ssn) {
-    }
 
     public Customer(Long id) {
         this.id = id;
+    }
+
+    public Customer(String name, int ssn) {
+        this.name = name;
+        this.ssn = ssn;
     }
 
     public Customer(Long id, String name, int ssn) {
