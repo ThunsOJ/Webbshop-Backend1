@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+
+  <style>
+    .allProducts {
+      font-family: Arial, Helvetica, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    .allProducts td, #customers th {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+
+    .allProducts tr:nth-child(even){background-color: #f2f2f2;}
+
+    .allProducts tr:hover {background-color: #ddd;}
+
+    .allProducts th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #04AA6D;
+      color: white;
+    }
+  </style>
+
+</head>
+<body>
+<form action="#" th:action="@{/productView/create}" th:object="${product}" method="post">
+  <label for="name">Name:</label><br>
+  <input type="text" id="name" name="name" value=""><br>
+  <label for="price">Price:</label><br>
+  <input type="number" id="price" name="price" value=""><br>
+  <input type="submit" value="Submit">
+</form>
+
+</body>
+</html>
