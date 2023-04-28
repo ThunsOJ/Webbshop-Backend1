@@ -45,27 +45,8 @@
 </head>
 <body>
 
-<h2 th:text="${productTitle}"></h2>
-<div class="allProducts" th:unless="${#lists.isEmpty(allProducts)}">
-
-  <table>
-    <th th:text="${name}"></th>
-    <th th:text="${price}"></th>
-    <th th:text="${buy}"></th>
-    <tbody>
-    <tr th:each="product : ${allProducts}">
-      <td th:text="${product.name}"></td>
-      <td th:text="${product.price}"></td>
-      <td><a th:href="@{/productView/{id}(id=${product.id})}" class="button">Add to cart</a></td>
-    </tr>
-    </tbody>
-  </table>
-  <a th:href="@{/productView/add}" class="button">Add new product</a>
-</div>
-
-
 <div class="allClicked allProducts" th:unless="${#lists.isEmpty(allCLicked)}">
-  <h2 th:text="${cartTitle}"></h2>
+  <h2 th:text="'Congratulations ' + ${fname} +', your order has been placed'"></h2>
 
   <table>
     <th th:text="${name}"></th>
@@ -77,8 +58,8 @@
     </tr>
     </tbody>
   </table>
-  <a th:href="@{/productView/order}" class="button">Buy</a>
-  <a th:href="@{/productView/clear}" class="button">Empty</a>
+
+  <a th:href="@{/productView/all}" class="button">Continue shopping</a>
 </div>
 
 
