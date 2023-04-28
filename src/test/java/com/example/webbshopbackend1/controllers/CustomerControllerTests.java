@@ -10,7 +10,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,9 +25,6 @@ class CustomerControllerTests {
     @Autowired
     private MockMvc mockMvc;
 
-//    @MockBean
-//    private CustomerController customermocktest;
-
     @MockBean
     CustomerRepository customerRepository;
 
@@ -42,7 +38,6 @@ class CustomerControllerTests {
         when(customerRepository.findById(2L)).thenReturn(Optional.of(c2));
         when(customerRepository.findById(3L)).thenReturn(Optional.of(c3));
         when(customerRepository.findAll()).thenReturn(List.of(c1,c2,c3));
-        
     }
 
     @Test
