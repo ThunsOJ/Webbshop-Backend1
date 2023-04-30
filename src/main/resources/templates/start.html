@@ -47,6 +47,20 @@
             background-color: white;
         }
 
+        .registration {
+            background-color: #99EDC3;
+            padding: 25px;
+            width: fit-content;
+        }
+
+        .te {
+            font-size: 15px;
+            font-family: "tahoma", serif;
+
+        }
+
+
+
     </style>
 </head>
 <body>
@@ -69,11 +83,10 @@
 
 <br>
 <div class="text">
-<p>Välkommen till giga shop! <br> Om du är ny kund och vill handla så registrera <br>
-    dig här nedanför och fortsätt sedan till produkter
-</p>
-    <br>
+<p>Välkommen till giga shop! <br><br><br></p>
 
+    <p class="te">Registrera en ny kund:</p>
+<div class="registration">
     <form action="/startlogin" method="post">
         <label for="name">Namn:</label><br>
         <input type="text" id="name" name="name" value=""><br>
@@ -81,7 +94,7 @@
         <input type="text" id="ssn" name="ssn" value=""><br><br>
         <input type="submit" value="Registrera">
     </form>
-
+</div>
 
 </div>
 </body>
