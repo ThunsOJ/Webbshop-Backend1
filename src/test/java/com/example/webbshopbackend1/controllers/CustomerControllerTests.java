@@ -8,13 +8,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.List;
 import java.util.Optional;
 
+import static org.hamcrest.Matchers.equalTo;
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -55,6 +59,23 @@ class CustomerControllerTests {
         this.mockMvc.perform(get("/customer/1"))
                 .andExpect(status().isOk())
                 .andExpect(content().json("{\"name\":\"Terje\",\"id\":1,\"ssn\":860327}"));
+    }
+
+    @Test
+    void addCustomerTest() throws Exception {
+        this.mockMvc.perform(post("/customer/add")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("{\"name\": \"Kalle Koskit\", \"ssn\": 990101}"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(equalTo("New customer Kalle Koskit was added"))
+        );
+    }
+    @Test
+    void deleteCustomerTest() throws Exception {
+        doNothing().when(customerRepository).deleteById(1L);
+        mockMvc.perform(delete("/customer/delete/1"))
+                .andExpect(content().string(equalTo("The customer with ID 1 was deleted.")));
+
     }
 }
 
