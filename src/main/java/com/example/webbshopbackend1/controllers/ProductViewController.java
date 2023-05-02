@@ -31,6 +31,7 @@ public class ProductViewController {
 
         if (isOrdered){
             products.clear();
+            isOrdered = false;
         }
 
         List<Product> p = repo.findAll();
