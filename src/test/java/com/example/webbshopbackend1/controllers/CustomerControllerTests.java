@@ -15,9 +15,10 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.hamcrest.Matchers.equalTo;
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -68,6 +69,13 @@ class CustomerControllerTests {
                 .andExpect(status().isOk())
                 .andExpect(content().string(equalTo("New customer Kalle Koskit was added"))
         );
+    }
+    @Test
+    void deleteCustomerTest() throws Exception {
+        doNothing().when(customerRepository).deleteById(1L);
+        mockMvc.perform(delete("/customer/delete/1"))
+                .andExpect(content().string(equalTo("The customer with ID 1 was deleted.")));
+
     }
 }
 
