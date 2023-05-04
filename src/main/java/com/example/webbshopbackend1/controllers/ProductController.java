@@ -33,6 +33,4 @@ public class ProductController {
         repo.save(p);
         return new ResponseEntity<>(p, HttpStatus.CREATED);
     }
-
-
 }

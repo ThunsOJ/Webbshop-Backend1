@@ -21,7 +21,6 @@ public class ProductViewController {
 
     private final ProductRepository repo;
     private final List<Product> products = new ArrayList<>();
-
     private final OrderRepository orderRepository;
     private final CustomerRepository customerRepository;
     private boolean isOrdered;
