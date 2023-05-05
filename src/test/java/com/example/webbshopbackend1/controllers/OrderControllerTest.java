@@ -111,7 +111,7 @@ public class OrderControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().json(
                         new ObjectMapper().writeValueAsString(
-                                List.of(order1, order2)
+                                customer1.getOrders()
                         )
                 ));
     }
@@ -128,6 +128,6 @@ public class OrderControllerTest {
                         List.of(p1, p2)
                 )))
                 .andExpect(status().isOk())
-                .andExpect(content().string(equalTo("Success!")));
+                .andExpect(content().string(equalTo("5")));
     }
 }

@@ -27,19 +27,15 @@ public class OrderController {
 
     @GetMapping("/customer/{id}")
     public ResponseEntity<Iterable<Orders>> orderByCustomer(@PathVariable Long id){
-        Iterable<Orders> ordersList = orderRepository.findByCustomer(
-                customerRepository.findById(id).get()
-        );
-        return ResponseEntity.ok(ordersList);
+        return ResponseEntity.ok(customerRepository.findById(id).get().getOrders());
     }
 
     @PostMapping("/buy/{id}")
-    public ResponseEntity<String> purchase(@PathVariable Long id,
+    public ResponseEntity<Long> purchase(@PathVariable Long id,
             @RequestBody List<Product> products){
-        orderRepository.save(new Orders(
+        return ResponseEntity.ok(orderRepository.save(new Orders(
                 customerRepository.findById(id).get(),
                 products
-        ));
-        return ResponseEntity.ok("Success!");
+        )).getId());
     }
 }
